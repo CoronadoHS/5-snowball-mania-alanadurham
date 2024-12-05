@@ -33,6 +33,7 @@ def main():
         players.append(nextPlayer)
         killcount.append(0)
     players.remove("DONE")
+    del killcount[0]
     
 
     choice = input("Will you choose who gets hit, or let us decide for you? Type 'yes' or 'no'. ")
@@ -70,13 +71,15 @@ def gameplay(name, players, killcount, manual):
             score = players.index(thrower)
             loser = players.index(target)
             killcount[score] += 1
-            killcount.pop[loser]
-              
+            del killcount[loser]
             players.remove(target)
         else:
             print("It misses " + target + ", they live another day...")
-        time.sleep(2)
-    print(players[0] + " wins the battle with " + killcount[0] + " wins!")
+        time.sleep(1)
+    if (killcount[0] > 1):
+        print(players[0] + " wins the battle with " + str(killcount[0]) + " wins!")
+    else:
+        print(players[0] + " wins the battle with " + str(killcount[0]) + " win!")
 
 
 
